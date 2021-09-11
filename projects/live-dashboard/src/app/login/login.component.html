@@ -1,0 +1,55 @@
+<div class=" container-fluid  h-100 gradient">
+  <div class="wrapper fadeInDown">
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <i class="fas fa-user-circle fa-6x blue"></i>
+    </div>
+
+    <div id="formContent" class="p-4">
+      <!-- Tabs Titles -->
+      <p class="gris mb-5 mt-3">Sign In</p>
+
+      <!-- Login Form -->
+      <form>
+        <div class="input-field mb-3">
+          <input type="text" id="login" class="fadeIn second" placeholder="Username" name="username" required>
+        </div>
+        <div class="input-field mb-3">
+
+          <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
+            placeholder="Password" name="password" value="FakePSW" required>
+          <!-- An element to toggle between password visibility -->
+
+        </div>
+
+
+        <button class="fadeIn fourth" value="Log In">login</button>
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-lg-start ">
+
+          <input class="form-check-input m-1" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label m-1 text-light " for="flexCheckDefault">
+            Remember me
+          </label>
+        </div>
+        <div class="m-1">
+          <a href="">Forgot Password</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>

@@ -1,0 +1,82 @@
+[
+	{
+		"name": "TEXT",
+		"id": "",
+		"label": "",
+		"hint": "",
+		"required": false,
+		"min_length": 1,
+		"max_length": 10
+	},
+	{
+		"name": "NUMBER",
+		"label": "",
+		"id": "",
+		"hint": "",
+		"required": false,
+		"min": 1,
+		"max": 10,
+		"operations": [],
+		"auto_calculated": false
+	},
+	{
+		"name": "EMAIL",
+		"label": "",
+		"id": "",
+		"required": false
+	},
+	{
+		"name": "URL",
+		"label": "",
+		"id": "",
+		"required": false
+	},
+	{
+		"name": "DATE",
+		"label": "",
+		"id": "",
+		"required": false
+	},
+	{
+		"name": "CHECKBOX",
+		"label": "",
+		"id": ""
+	},
+	{
+		"name": "DROPDOWN",
+		"label": "",
+		"id": "",
+		"required": false,
+		"options": [],
+		"multiple": false
+	},
+	{
+		"name": "FILE",
+		"label": "",
+		"id": "",
+		"required": false,
+		"multiple": false,
+		"mime_type": ""
+	},
+	{
+		"name": "REF",
+		"label": "",
+		"id": "",
+		"required": false,
+		"entity": ""
+	},
+	{
+		"name": "LIST",
+		"label": "",
+		"id": "",
+		"required": false,
+		"data_type": ""
+	},
+	{
+		"name": "LISTREF",
+		"label": "",
+		"id": "",
+		"required": false,
+		"entity": ""
+	}
+]

@@ -1,0 +1,14 @@
+@import '../styles/colors';
+.red{
+    background-color: $red ;
+    border: 2px solid $red;
+   h5,h1{
+    color: $white;
+   } 
+    
+}
+.simple{
+    h1{
+        color : $blue;
+    }
+}

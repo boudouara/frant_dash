@@ -1,0 +1,48 @@
+@import '../styles/colors';
+.btn{
+    border: 1px solid $blue;
+    color: $blue;
+    background-color: $white;
+    
+    margin-top: 1%;
+
+    text-align: center;
+    &:hover{
+        background-color: $blue;
+        color: $white;
+    }
+
+
+
+}
+.green{
+    background-color:$white;
+    box-shadow: none;
+    color: $green;
+ 
+    border: 0ch;
+    &:hover{
+        box-shadow: none;
+        background-color:$white;
+        border: 0ch;
+        color: lighten($color: $green, $amount: 40%)
+    }
+}
+.red{
+    background-color:$white;
+    box-shadow: none;
+  
+    border: 0ch;
+    color:$red;
+   &:hover{
+    box-shadow: none;
+        color: lighten($color: $red, $amount: 40%);
+        background-color:$white;
+        border: 0ch;
+
+    }
+}
+.border-red{
+    border: 1px solid $red;
+    border-radius: 20px;
+}

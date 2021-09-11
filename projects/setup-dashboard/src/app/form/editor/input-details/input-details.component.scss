@@ -1,0 +1,25 @@
+@import '../../../styles/colors';
+.red{
+    color: $red;
+    &:hover{
+        color: darken($color: $red, $amount: 20%);
+    }
+}
+.submit{
+    border: 1px solid $blue;
+    border-radius: 5px;
+    color: $blue;
+    &:hover{
+        color: $white;
+        background-color: $blue;
+    }
+}
+.cancel{
+    border: 1px solid $gray;
+    border-radius: 5px;
+    color: $blue;
+    &:hover{
+        color: $white;
+        background-color: $gray;
+    }
+}

@@ -1,0 +1,31 @@
+<div class=" container-fluid">
+  <div class="row end mx-2">
+    <div class="mt-1">
+      <h4>entity name</h4>
+    </div>
+    <div class=" mb-5  ">
+      <button mat-fab class="btn btnadd" aria-label="Create template" [routerLink]="['create']">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row  justify-content-around ">
+
+  <div [ngStyle]="{'background-color': getRandomColor()}" ng-mouseover="style={'background-color': ' red'} "
+    *ngFor="let item of items;" class="card col-3 m-1 mt-2  ">
+
+    <div class="row overlay d-flex justify-content-center mt-2 p-3">
+      <h5 class=" text-center ">{{item.name}}</h5>
+    </div>
+
+    <div class="row right">
+      <!---  <button mat-icon-button class="green btn" ><mat-icon>edit</mat-icon></button>--->
+      <button mat-icon-button class="red btn" (click)="Delete(item.id)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+
+    </div>
+  </div>
+
+</div>

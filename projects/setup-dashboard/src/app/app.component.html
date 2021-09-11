@@ -1,0 +1,27 @@
+<nb-layout>
+  <nb-layout-header subheader>
+    <div class="container-fluid d-flex justify-content-between ">
+      <div>
+        <h5>{{title}}</h5>
+      </div>
+      <div class=" row m-0 p-0">
+        <div class="borderred row ">
+          <nb-search type="rotate-layout" class=" mr-1 "></nb-search>
+          <nb-action icon="bell" badgeDot badgePosition="top right" badgeStatus="info" class="mr-2 pr-2">
+          </nb-action>
+        </div>
+        <div class="mx-2"></div>
+        <div class="mx-4">
+          <nb-user size="medium" name="Oumaima laib" title="Engineer" onlyPicture>
+          </nb-user>
+        </div>
+      </div>
+    </div>
+  </nb-layout-header>
+  <nb-sidebar responsive="true">
+    <router-outlet name="sidebar"></router-outlet>
+  </nb-sidebar>
+  <nb-layout-column class="">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>

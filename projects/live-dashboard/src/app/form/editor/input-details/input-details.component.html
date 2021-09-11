@@ -1,0 +1,107 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <nb-card size="medium">
+        <nb-card-header>{{input.name}} Properties</nb-card-header>
+        <nb-card-body>
+            <input type="text" fullWidth placeholder="Label" nbInput formControlName="label">
+            <div *ngIf="form.get('label')?.invalid && submited">
+                <p *ngIf="form.get('label')?.errors?.required">
+                    Label is required.
+                </p>
+            </div>
+            <input type="text" fullWidth placeholder="ID" nbInput formControlName="id">
+            <div *ngIf="form.get('id')?.invalid && submited">
+                <p *ngIf="form.get('id')?.errors?.required">
+                    ID is required.
+                </p>
+            </div>
+            <div *ngIf="input.name === 'TEXT' || input.name === 'NUMBER'">
+                <input type="text" fullWidth placeholder="Hint" formControlName="hint" nbInput>
+                <div *ngIf="form.get('hint')?.invalid && submited">
+                    <p *ngIf="form.get('hint')?.errors?.required">
+                        Hint is required.
+                    </p>
+                </div>
+            </div>
+            <nb-toggle formControlName="required">Required</nb-toggle>
+            <div *ngIf="input.name === 'TEXT'">
+                <input type="number" fullWidth placeholder="Min Length" nbInput formControlName="min_length">
+                <div *ngIf="form.get('min_length')?.invalid && submited">
+                    <p *ngIf="form.get('min_length')?.errors?.required">
+                        Min Length is required.
+                    </p>
+                    <p *ngIf="form.get('min_length')?.errors?.min">
+                        Min has to be greater than 2.
+                    </p>
+                </div>
+                <input type="number" fullWidth placeholder="Max Length" nbInput formControlName="max_length">
+                <div *ngIf="form.get('max_length')?.invalid && submited">
+                    <p *ngIf="form.get('max_length')?.errors?.required">
+                        Max Length is required.
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="input.name === 'NUMBER'">
+                <input type="number" fullWidth placeholder="Min" nbInput formControlName="min">
+                <div *ngIf="form.get('min')?.invalid && submited">
+                    <p *ngIf="form.get('min')?.errors?.required">
+                        Min is required.
+                    </p>
+                </div>
+                <input type="number" fullWidth placeholder="Max" nbInput formControlName="max">
+                <div *ngIf="form.get('max')?.invalid && submited">
+                    <p *ngIf="form.get('max')?.errors?.required">
+                        Max is required.
+                    </p>
+                </div>
+                <nb-toggle formControlName="auto_calculated">Auto Calculated</nb-toggle>
+                <textarea nbInput fullWidth placeholder="Operation" formControlName="operation"></textarea>
+            </div>
+            <div *ngIf="input.name === 'REF' || input.name === 'LISTREF'">
+                <nb-select placeholder="Entity1" formControlName="entity">
+                    <nb-option *ngFor="let entity of entities" value="{{entity}}">{{entity}}</nb-option>
+                </nb-select>
+                <div *ngIf="form.get('entity')?.invalid && submited">
+                    <p *ngIf="form.get('entity')?.errors?.required">
+                        Entity is required.
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="input.name === 'FILE'">
+                <nb-select placeholder="File Types" formControlName="mime_type">
+                    <nb-option *ngFor="let mime_type of mime_types" value="{{mime_type}}">{{mime_type}}</nb-option>
+                </nb-select>
+                <div *ngIf="form.get('mime_type')?.invalid && submited">
+                    <p *ngIf="form.get('mime_type')?.errors?.required">
+                        File Type is required.
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="input.name === 'DROPDOWN'">
+                <input id="dropdown_option" type="text" placeholder="Option" nbInput #option>
+                <button type="button" (click)="addOption(option)" nbButton status="primary">Add</button><br>
+                <nb-tag-list (tagRemove)="onOptionRemove($event)">
+                    <nb-tag *ngFor="let option of options" [text]="option" [removable]="true"></nb-tag>
+                </nb-tag-list>
+                <p *ngIf="options.length < 2 && submited">
+                    You should add at least 2 Options.
+                </p>
+            </div>
+            <nb-toggle *ngIf="input.name === 'FILE' || input.name === 'DROPDOWN'" formControlName="multiple">Multiple
+            </nb-toggle>
+            <div *ngIf="input.name === 'LIST'">
+                <nb-select placeholder="List Types" formControlName="data_type">
+                    <nb-option *ngFor="let data of data_types" value="{{data}}">{{data}}</nb-option>
+                </nb-select>
+                <div *ngIf="form.get('data_type')?.invalid && submited">
+                    <p *ngIf="form.get('data_type')?.errors?.required">
+                        Data Type is required.
+                    </p>
+                </div>
+            </div>
+        </nb-card-body>
+        <nb-card-footer>
+            <button type="submit" nbButton status="primary">Submit</button>
+            <button type="button" (click)="cancel()" nbButton status="primary">Cancel</button>
+        </nb-card-footer>
+    </nb-card>
+</form>

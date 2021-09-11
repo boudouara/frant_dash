@@ -1,0 +1,39 @@
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '../src/app/styles/colors';
+$nb-themes: nb-register-theme((
+  menu-text-color: $light, //
+  menu-item-hover-text-color: white, //
+  menu-item-icon-hover-color: white, // add your variables here like:
+  menu-text-font-size:16, //
+  menu-item-divider-style:none, //
+  menu-text-font-weight:400, //
+  menu-item-padding:10px, //
+  menu-item-icon-active-color: white, // 
+  menu-item-text-active-color: white, //
+  menu-item-divider-left-style:solid, //
+  header-padding:0px,//
+  header-shadow:0px, //
+  sidebar-footer-height:0px, //
+  sidebar-padding:0px, //
+  actions-icon-color: $red,//
+  actions-divider-style:none,//
+  user-picture-box-border-color: $red,//
+  layout-background-color:white,//
+  toggle-basic-checked-background-color:$blue,//
+  toggle-basic-focus-checked-background-color:$blue,//
+  toggle-basic-checked-switcher-checkmark-color:$blue,//
+  toggle-basic-focus-checked-border-color:$blue,//
+  // add your variables here like:
+
+  // color-primary-100: #f2f6ff,
+  // color-primary-200: #d9e4ff,
+  // color-primary-300: #a6c1ff,
+  // color-primary-400: #598bff,
+  // color-primary-500: #3366ff,
+  // color-primary-600: #274bdb,
+  // color-primary-700: #1a34b8,
+  // color-primary-800: #102694,
+  // color-primary-900: #091c7a,
+
+), default, default);

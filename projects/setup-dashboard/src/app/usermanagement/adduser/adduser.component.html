@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center flex-column">
+    <h1 class=" text-center">Add new user </h1>
+    <form   [formGroup]="form" (ngSubmit) = "onClickSubmit()" >
+<div class="d-flex flex-column m-5 ">
+    <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+        <mat-label> User full name</mat-label>
+        <input  formControlName="fullname" type="text" name="name"  matInput ngModel required >
+
+  
+      
+    </mat-form-field>
+    <small class="div" *ngIf="submitted && f.fullname.errors" >
+      <mat-error  *ngIf="f.fullname.errors.required">
+        fullname  required
+     </mat-error>
+    </small>
+        <mat-form-field class="example-full-width"  >
+        <mat-label> User name</mat-label>
+        <input  formControlName="username" type="text" name="username"  matInput ngModel required>
+   
+    </mat-form-field>
+    <small class="div" *ngIf="submitted && f.username.errors" >
+      <mat-error *ngIf="f.username.errors.minlength">
+        Username must be at least 4 characters
+     </mat-error>
+     <mat-error  *ngIf="f.username.errors.maxlength">
+      Username must not exceed 20 characters
+   </mat-error>
+     <mat-error *ngIf="f.username.errors.required">
+      fullname  required
+   </mat-error>
+  </small>
+        <mat-form-field class="example-full-width"  >
+        <mat-label> Birthday</mat-label>
+        <input type="date" name="bd"  matInput ngModel required>
+     
+    </mat-form-field>
+    <small class="div"  *ngIf="submitted && f.birthday.errors">
+      <mat-error *ngIf="f.birthday.errors.required">
+        birthday  required
+     </mat-error>
+    </small>
+        <!---------------------gender-->
+        <div class="row justify-content-between">
+          <mat-form-field appearance="fill" class="col-5">
+            <mat-label>Gender</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                {{gender.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field  appearance="fill" class=" col-5">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role" >
+              <mat-option *ngFor="let role of Roles" [value]="role.value">
+                {{role.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-error *ngIf="submitted && f.role.errors">
+            role is required
+         </mat-error>
+        </div>
+     
+        <!---------------email-->
+        <mat-form-field  class="example-full-width"  >
+            <mat-label> Email</mat-label>
+            <input  formControlName="email" type="email" name="email"  matInput required ngModel>
+           
+          
+        </mat-form-field>
+        <small *ngIf="submitted && f.email.errors" >
+          <mat-error *ngIf="submitted &&  f.email.errors.required">Email is required</mat-error>
+          <mat-error *ngIf=" submitted &&  f.email.errors.email">Email is invalid</mat-error>
+    </small>
+
+      
+        <!-------------------------------------->
+        <mat-form-field  class="example-full-width"  >
+            <input matInput  placeholder="password" [type]="hide ? 'password' 
+              : 'text'" required ngModel   formControlName="password" >
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
+              'visibility_off'}}</mat-icon>
+            
+          </mat-form-field>
+          <mat-error *ngIf="submitted && f.password.errors">
+            password is required
+         </mat-error>
+  
+</div>
+<div class="d-flex justify-content-center">
+    <button class="btn button px-5">ADD</button>
+</div>
+
+</form>
+</div>

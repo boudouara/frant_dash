@@ -1,0 +1,59 @@
+[
+    {
+      "name": "TEXT",
+      "label": "First Name",
+      "id": "first_name",
+      "hint": "First Name",
+      "required": true,
+      "min_length": 5,
+      "max_length": 10
+    },
+    {
+      "name": "TEXT",
+      "label": "Last Name",
+      "id": "last_name",
+      "hint": "Last Name",
+      "required": true,
+      "min_length": 5,
+      "max_length": 10
+    },
+    {
+      "name": "NUMBER",
+      "label": "Total PRice",
+      "id": "total_price",
+      "hint": "100",
+      "required": true,
+      "min": 5,
+      "max": 10,
+      "operation": [
+        {
+          "type": "COMPONENT",
+          "id": "age",
+          "op": "+"
+        },
+        {
+          "type": "VALUE",
+          "value": 20,
+          "op": "+"
+        },
+        {
+          "type": "REF",
+          "id": "age",
+          "op": "+"
+        },
+        {
+          "type": "ADVANCED",
+          "operation": "count",
+          "id": "lis",
+          "op": null
+        }
+      ]
+    },
+    {
+      "name": "REF",
+      "label": "ids",
+      "id": "ids",
+      "required": true,
+      "entity": "session"
+    }
+  ]

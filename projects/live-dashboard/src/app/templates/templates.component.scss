@@ -1,0 +1,61 @@
+@import '../styles/colors';
+table {
+    width: 100%;
+    margin-right: 40%;
+  }
+.border-red{
+    border: 1px solid white;
+    border-radius: 20px;
+}  
+th {
+   
+    color: #AF0911;
+} 
+.red{
+    color:$red;
+   &:hover{
+        color: lighten($color: $red, $amount: 40%)
+
+    }
+}
+.right{
+    display: flex;
+    justify-content: flex-end;
+}
+.green{
+    color: $green;
+    &:hover{
+        color: lighten($color: $green, $amount: 40%)
+    }
+}
+.addbtn{
+    width: 90%;
+    border: 1px solid $blue;
+    border-radius: 20px;
+    height:85%;
+    margin-top: 10%;
+    display: flex;
+   justify-content: center;
+  
+    
+    mat-icon{
+    
+        color: $blue;
+        text-align: center;
+        
+        display: flex;
+        justify-self: center;
+        align-self: center;
+        transform: scale(5);
+
+    }
+    &:hover{
+        background-color: $blue;
+        color: $white;
+        mat-icon{
+            color: $white;
+         
+        }
+
+    }
+}

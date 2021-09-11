@@ -1,0 +1,14 @@
+
+@import '../styles/colors';
+.items{
+   
+    text-decoration: none;
+
+    color: 	$light;
+    &:hover{
+        color: $white;
+    }
+}
+.active{
+    color: $white;
+}

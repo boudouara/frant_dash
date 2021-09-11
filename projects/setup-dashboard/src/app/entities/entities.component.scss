@@ -1,0 +1,62 @@
+@import '../styles/colors';
+table {
+    width: 100%;
+  }
+.border-red{
+    border: 1px solid $red;
+    border-radius: 20px;
+}  
+.red{
+    box-shadow:none;
+    color:$red;
+   &:hover{
+       background-color:$white;
+        color: lighten($color: $red, $amount: 40%)
+
+    }
+}
+.right{
+    display: flex;
+    justify-content: flex-end;
+}
+.green{
+    box-shadow:none;
+    color: $green;
+    background-color:$white;
+    &:hover{
+        color: lighten($color: $green, $amount: 40%)
+    }
+}
+.addbtn{
+    box-shadow:none;
+    width: 90%;
+   
+    border: 1px solid $blue;
+    border-radius: 20px;
+    height:85%;
+    margin-top: 10%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  
+    
+    mat-icon{
+       
+    
+        color: $blue;
+       
+        
+      
+        transform: scale(4);
+
+    }
+    &:hover{
+        background-color: $blue;
+        color: $white;
+        mat-icon{
+            color: $white;
+         
+        }
+
+    }
+}

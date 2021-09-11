@@ -1,0 +1,166 @@
+
+<nb-layout class="m-0">
+    <nb-layout-column class="m-0 p-0 ">
+       
+                <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" class="d-flex w-100  flex-column m-0 px-2 pt-2 p-0 ">
+                    <div *ngFor="let input of inputs" class="form-row w-100">
+                        <!-- Inputs -->
+                        <div [ngSwitch]="input.name" class=" w-100 p-0 m-0">
+                            <div *ngSwitchCase="'TEXT'" >
+                                <div class="m-0 d-flex flex-lg-row flex-column flex-sm-column flex-md-row ">
+                                <label class=" w-25 label mt-2" for="{{input.label}}"> {{input.label}}:</label>
+                                <input type="text" fullWidth placeholder="{{input.hint}}" nbInput
+                                    formControlName="{{input.id}}" name="{{input.label}}">
+                                </div>
+                                <div *ngIf="form.get(input.id)?.invalid && submited"  style="margin-left: 20%;">
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.minlength">
+                                        {{input.label}} must be at least {{input.min_length}} characters long.
+                                    </small>
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.maxlength">
+                                        {{input.label}} must be at least {{input.max_length}} characters long.
+                                    </small>
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.required">
+                                        {{input.label}} is required.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="'EMAIL'">
+                                <div class="m-0 d-flex flex-lg-row flex-column flex-sm-column flex-md-row ">
+                                <label class=" w-25 label mt-2"> {{input.label}} :</label>
+                                <input type="email" fullWidth placeholder="example@email.com" nbInput
+                                    formControlName="{{input.id}}">
+                                </div>
+                                <div *ngIf="form.get(input.id)?.invalid && submited"  style="margin-left: 20%;">
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.required">
+                                        {{input.label}} is required.
+                                    </small>
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.email">
+                                        {{input.label}} shoule be an Email.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="'URL'">
+                                <div class="m-0 d-flex flex-lg-row flex-column flex-sm-column flex-md-row ">
+                                <label class=" w-25 label mt-2">{{input.label}}:</label>
+                                <input type="url" fullWidth placeholder="www.website.com" nbInput
+                                    formControlName="{{input.id}}">
+                                    </div>
+                                <div *ngIf="form.get(input.id)?.invalid && submited"  style="margin-left: 20%;">
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.required">
+                                        {{input.label}} is required.
+                                    </small>
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.pattern">
+                                        {{input.label}} shoule be a URL.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="'CHECKBOX'">
+                                <nb-checkbox fullWidth (checkedChange)="toggle($event, input.id)"
+                                    formControlName="{{input.id}}">{{input.label}}</nb-checkbox>
+                            </div>
+
+                            <div *ngSwitchCase="'NUMBER'">
+                                <div class="m-0 d-flex flex-lg-row flex-column flex-sm-column flex-md-row ">
+                                <label class=" mr-5 label mt-2">{{input.label}}:</label>
+                                <input type="number" placeholder="{{input.hint}}"  nbInput formControlName="{{input.id}}"
+                                    min="{{input.min}}" max="{{input.max}}">
+                                    </div>
+                                <button type="button" *ngIf="input.auto_calculated"
+                                    (click)="autoCalculate(input.operation)" nbButton
+                                    status="success">Calculate</button>
+
+                                <div *ngIf="form.get(input.id)?.invalid && submited" style="margin-left: 20%;">
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.min">
+                                        {{input.label}} must be greater than {{input.min}}.
+                                    </small>
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.max">
+                                        {{input.label}} must be lesser than {{input.max}}.
+                                    </small>
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.required">
+                                        {{input.label}} is required.
+                                    </small>
+                                </div>
+                            </div><br>
+
+                            <div *ngSwitchCase="'DATE'">
+                                <div class="m-0 d-flex flex-lg-row flex-column flex-sm-column flex-md-row ">
+                                    <label class=" w-25 label mt-2"> {{input.label}}:</label>
+                                    <input [nbDatepicker]="datepicker" nbInput placeholder="22/07/1998"
+                                    formControlName="{{input.id}}">
+                                </div>
+                               
+                                <nb-datepicker #datepicker></nb-datepicker>
+                                <div *ngIf="form.get(input.id)?.invalid && submited"  style="margin-left: 20%;">
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.required">
+                                        {{input.label}} is required.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="'DROPDOWN'">
+                                <nb-select [multiple]="input.multiple" placeholder="{{input.label}}"
+                                    formControlName="{{input.id}}">
+                                    <nb-option *ngFor="let option of input.options" [value]="option">{{option}}
+                                    </nb-option>
+                                </nb-select>
+                                <div *ngIf="form.get(input.id)?.invalid && submited"  style="margin-left: 20%;">
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.required">
+                                        {{input.label}} is required.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="'REF'">
+                                <div class="m-0 d-flex flex-lg-row flex-column flex-sm-column flex-md-row ">
+                                <label class=" w-25 label mt-2" >  {{input.label}}:</label>
+                                <input type="text" class="ml-3" fullWidth nbInput formControlName="{{input.id}}" placeholder="IDs">
+                                <button class=" btn mx-1 add" type="button" (click)="getData(input.id, input.name, input.entity)" 
+                                   >Add</button><br>
+                                </div>
+                                <div *ngIf="form.get(input.id)?.invalid && submited"  style="margin-left: 20%;">
+                                    <small class=" text-danger " *ngIf="form.get(input.id)?.errors?.required">
+                                        {{input.label}} is required.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div *ngIf="input.name === 'LIST'">
+                                <div class="m-0 d-flex flex-lg-row flex-column flex-sm-column flex-md-row ">
+                                <label  class=" w-25 label mt-2">{{input.label}}:</label>
+                                <input id="list_item" type="{{input.data_type}}" class="ml-3" placeholder="Item" nbInput #item>
+                                <button type="button" class=" btn mx-1 add" (click)="addItem(item, input.id)" nbButton
+                                >Add</button><br>
+                                </div>
+                                <nb-tag-list (tagRemove)="onItemRemove($event, input.id)">
+                                    <nb-tag *ngFor="let item of items[input.id].value" [text]="item" [removable]="true">
+                                    </nb-tag>
+                                </nb-tag-list>
+                                <small class=" text-danger " *ngIf="!items[input.id].valid && submited">
+                                    You should add at least 1 Item.
+                                </small>
+                            </div>
+
+                            <div *ngSwitchCase="'FILE'">
+                                <div class="m-0 d-flex flex-lg-row">
+                                    <label  class=" w-25 label mt-2">{{input.label}}:</label>
+                                <input type="file" fullWidth nbInput formControlName="{{input.id}}"
+                                    [accept]="input.mime_type">
+                                </div>
+                                <div *ngIf="form.get(input.id)?.invalid && submited"  style="margin-left: 20%;">
+                                    <small class=" text-danger"  *ngIf="form.get(input.id)?.errors?.required">
+                                        {{input.label}} is required.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" d-flex justify-content-center   mb-0 p-0 " style="margin-bottom: 0%; margin-top: 16%;">
+                    <button type="submit" class=" btn submit"   >Submit</button>
+                </div>
+                </form>
+            
+    </nb-layout-column>
+</nb-layout>

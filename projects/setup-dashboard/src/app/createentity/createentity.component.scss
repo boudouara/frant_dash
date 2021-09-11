@@ -1,0 +1,12 @@
+@import "../styles/colors";
+.red{
+    background-color: $red;
+    
+    color:$white;
+    &:hover{
+        background-color: $blue;
+    }
+}
+h1{
+    color: $red;
+}

@@ -1,0 +1,23 @@
+@import './styles/colors';
+nb-sidebar {
+    background-color: $blue;
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+nb-layout-header {
+    h5 {
+        color: $red;
+    }
+    nb-search {
+        color: $red;
+    }
+}
+.borderred{
+
+    border-right: 2px solid $red;
+    margin: 0%;
+}

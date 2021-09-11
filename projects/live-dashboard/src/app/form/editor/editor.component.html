@@ -1,0 +1,39 @@
+<nb-layout cdkDropListGroup>
+   
+    <nb-sidebar>
+        <nb-list cdkDropListSortingDisabled cdkDropList (cdkDropListDropped)="drop($event)"
+            [cdkDropListData]="predefined_inputs">
+            <nb-list-item *ngFor="let input of predefined_inputs" cdkDrag>
+                {{ input.name }}
+            </nb-list-item>
+        </nb-list>
+    </nb-sidebar>
+
+    <nb-layout-column>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <input type="text" fullWidth nbInput placeholder="Template Name" formControlName="template_name">
+            <div *ngIf="form.get('template_name')?.invalid && submited">
+                <p *ngIf="form.get('template_name')?.errors?.required">
+                    Template Name is required.
+                </p>
+            </div>
+            <nb-card>
+                <nb-card-header>
+                    Inputs
+                </nb-card-header>
+                <nb-list cdkDropList cdkDropListDisabled [cdkDropListData]="inputs" (cdkDropListDropped)="drop($event)">
+                    <nb-list-item *ngFor="let input of inputs; let i = index" cdkDrag>
+                        {{input.name}}
+                        <button nbButton type="button" (click)="open(input, i)">Edit</button>
+                        <button nbButton type="button" (click)="delete(input)">Delete</button>
+                    </nb-list-item>
+                    <nb-list-item *ngIf="inputs.length === 0">Add Inputs Here</nb-list-item>
+                </nb-list>
+            </nb-card>
+            <p *ngIf="inputs_empty && submited">
+                There's no Component in list.
+            </p>
+            <button nbButton status="primary">Save</button>
+        </form>
+    </nb-layout-column>
+</nb-layout>
